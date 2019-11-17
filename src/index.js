@@ -41,6 +41,8 @@ export function refs(el){
   }, {})  
 }
 
+let isNode = node => typeof node[0] === 'string'
+
 export function view(arr = []){
  let queryStr = arr[0]
  const query = parseQuery(queryStr)
@@ -65,6 +67,7 @@ export function view(arr = []){
    children = arr.slice(1)
  }
  
+ 
  // Apply props
  Object.keys(props).forEach(attr => {
   let prefix = attr.slice(0,2)
@@ -79,14 +82,20 @@ export function view(arr = []){
   }
  })
  
+ function applyChildren(el, children = []){
+   children.forEach(c => {
+     if(!isNode(c)) {
+       applyChildren(el, c)
+     } else if (typeof c === 'string') {
+        el.textContent = c
+      } else {
+        el.appendChild(view(c))
+      }
+   })
+ }
+ 
  // Apply children
- children.forEach(c => {
-   if(typeof c === 'string') {
-     el.textContent = c
-   } else {
-     el.appendChild(view(c))
-   }
- })
+ applyChildren(el, children)
  
  return el
 }
