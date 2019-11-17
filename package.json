@@ -2,9 +2,9 @@
   "name": "oeil",
   "version": "1.0.1",
   "main": "dist/oeil.js",
-  "umd:main": "dist/oeil.umd.js",
   "module": "dist/oeil.mjs",
   "source": "src/index.js",
+  "unpkg": "dist/oeil.umd.js",
   "license": "MIT",
   "devDependencies": {
     "microbundle": "^0.11.0"
