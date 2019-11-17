@@ -1,6 +1,6 @@
 {
   "name": "oeil",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "dist/oeil.js",
   "umd:main": "dist/oeil.umd.js",
   "module": "dist/oeil.mjs",
